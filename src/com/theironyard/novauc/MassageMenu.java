@@ -1,9 +1,18 @@
 package com.theironyard.novauc;
 
+import jodd.json.JsonParser;
+import jodd.json.JsonSerializer;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+
 /**
  * Created by souporman on 2/15/17.
  */
-public class MassageMenu {
+public class MassageMenu{
+
     public void oldCrap() {
 //        public Item randomArmorCrafter(String typeOfArmor){
 //            int value=(int)((Math.random()*1001)+1);
@@ -84,16 +93,16 @@ public class MassageMenu {
 
     //These are preset people who massage in a list so that the new user doesn't feel alone
     public void createOptions() {
-        Main.listMassuese.add(new HappyEnding("Will", 60, 220, 5, "Happy Endings"));
-        Main.listMassuese.add(new Aromatherapy("Prakash", 90, 400, 5, "Aromatherapy"));
-        Main.listMassuese.add(new SwedishMassage("D'Angelo", 45, 200, 2, "Swedish Massage"));
-        Main.listMassuese.add(new HotStoneMassage("Ross", 75, 333, 3, "Hot Stone Massage"));
-        Main.listMassuese.add(new DeepTissueMassage("Peter", 60, 450, 1, "Deep Tissue Massage"));
-        Main.listMassuese.add(new HotStoneMassage("Mike", 10, 222, 3, "Hot Stone Massage"));
-        Main.listMassuese.add(new Aromatherapy("Alvin", 50, 322, 2, "Aromatherapy"));
+        Main.listMasseuse.add(new HappyEnding("Will", 60, 220, 5, "Happy Endings"));
+        Main.listMasseuse.add(new Aromatherapy("Prakash", 90, 400, 5, "Aromatherapy"));
+        Main.listMasseuse.add(new SwedishMassage("D'Angelo", 45, 200, 2, "Swedish Massage"));
+        Main.listMasseuse.add(new HotStoneMassage("Ross", 75, 333, 3, "Hot Stone Massage"));
+        Main.listMasseuse.add(new DeepTissueMassage("Peter", 60, 450, 1, "Deep Tissue Massage"));
+        Main.listMasseuse.add(new HotStoneMassage("Mike", 10, 222, 3, "Hot Stone Massage"));
+        Main.listMasseuse.add(new Aromatherapy("Alvin", 50, 322, 2, "Aromatherapy"));
     }
 
-    public void massageMenu() {
+    public void massageMenu() throws IOException{
         while (true) {
             System.out.println("##############################################################");
             System.out.println("################                               ###############");
@@ -111,9 +120,15 @@ public class MassageMenu {
             switch (menuResponse) {
                 case 1:
                     showGirls();
-
+                    System.out.println("Would you like to return to the main menu??");
+                    System.out.println("YES or YES or 1 ?");
+                    String worthlessInput=Main.kb2.nextLine();
                     break;
                 case 2:
+                    rateGirl();
+                    System.out.println("Would you like to return to the main menu??");
+                    System.out.println("YES or YES or 1 ?");
+                    String worthlessInput=Main.kb2.nextLine();
                     //TODO create a rate a service statement
                     break;
                 case 3:
@@ -128,16 +143,42 @@ public class MassageMenu {
         }
     }
 
-    public void showGirls() {
-        for (Massage listItem : Main.listMassuese) {
+    public void showGirls() throws IOException{
+
+        File file=new File("masseuse.json");
+        FileWriter fwriter = new FileWriter(file);
+
+        for (Massage listItem : Main.listMasseuse) {
             listItem.print();
         }
+        String jsonFormatedItem=Main.serializer.serialize(Main.listMasseuse);
+        fwriter.append(jsonFormatedItem);
+        fwriter.close();
+//        Person p = new Person();
+//        p.setName("Alice Smith");
+//        p.setAge(30);
+//        File f=new File("person.json");
+//        JsonSerializer serializer=new JsonSerializer();
+//        String jsonFormatedPerson =serializer.serialize(p);
+//        FileWriter fw = new FileWriter(f);
+//        fw.write(jsonFormatedPerson);
+//        fw.close();
+
+//        Scanner s = new Scanner(f);
+//        s.useDelimiter("\\Z");
+//        String contents =s.next();
+//        JsonParser parser = new JsonParser();
+//        Person p2 = parser.parse(contents,Person.class);
+//        System.out.println(p2);
+//        System.out.println("p2 name is "+ p2.name);
+//        System.out.println("p2 age is "+ p2.age);
+//        System.out.println("p2 is alive ? "+ p2.isAlive);
     }
     public void rateGirl(){
 
     }
     public void joinTeam(){
-        
+
     }
 
 }
