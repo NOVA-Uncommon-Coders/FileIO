@@ -15,6 +15,10 @@ public class Main {
     public static Scanner kb = new Scanner(System.in);
     public static Scanner kb2 = new Scanner(System.in);
     public static Scanner kb3 = new Scanner(System.in);
+    public static Scanner kb4 = new Scanner(System.in);
+    public static Scanner kb5 = new Scanner(System.in);
+    public static Scanner kb6 = new Scanner(System.in);
+    public static Scanner kb7 = new Scanner(System.in);
 
     public static MassageMenu menu=new MassageMenu();
     public static JsonSerializer serializer=new JsonSerializer();
