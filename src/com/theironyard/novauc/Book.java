@@ -13,16 +13,6 @@ public class Book {
 
     public Book () {}
 
-//    Book(String title, String genre, String author, int serial, double cost) {
-//        this.title = title;
-//        this.genre = genre;
-//        this.author = author;
-//        this.serial = serial;
-//        this.cost = cost;
-//    }
-
-    //Getters and Setters
-
     //Title
     public String getTitle() {
         return title;

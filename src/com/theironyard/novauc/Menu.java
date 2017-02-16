@@ -14,13 +14,13 @@ public class Menu {
 
     ReadWriteJson rwj = new ReadWriteJson();
 
-
     Scanner inputInt = new Scanner(System.in);
     Scanner inputDbl = new Scanner(System.in);
     Scanner input = new Scanner(System.in);
 
 
     public void start() throws IOException{
+        rwj.reading();
         while (true) {
             System.out.println("What would you like to do? add / update / done");
             switch (input.nextLine()) {
@@ -33,7 +33,7 @@ public class Menu {
                                 break;
                 default:
                     rwj.writing(myBook);
-                    System.out.println("test: rwj should have written");
+                    System.out.println("File written");
                     return;
             }
         }
@@ -51,12 +51,8 @@ public class Menu {
             myBook.setCost(inputDbl.nextDouble());
     }
 
-    public void update() {
+    public void update() throws IOException {
         while (true) {
-            //ToDo: add reading the file method
-            //ToDo: also add writing the file method so that the file writes after updating - done in other menu
-            //rwj.reading(Book myBook);
-
             System.out.println("Which category would you like to update? title / genre / author / serial / cost / done");
             category = input.nextLine();
             switch (category) {

@@ -27,14 +27,14 @@ public class ReadWriteJson {
         fw.close();
 
     }
-    public void reading(Book yourBook) throws IOException{
+    public void reading() throws IOException{
         Scanner s = new Scanner(f);
-
-        //s.useDelimiter("\\Z");
-
-        String contents = s.useDelimiter("\\Z").next();
-
         JsonParser parser = new JsonParser();
-        yourBook = parser.parse(contents, Book.class);
+
+        s.useDelimiter("\\Z");
+        String contents = s.next();
+
+       Main.menu.myBook = parser.parse(contents, Book.class);
+
     }
 }
