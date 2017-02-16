@@ -5,28 +5,26 @@ package com.theironyard.novauc;
  */
 public class Book {
 
-     String title;
-     String genre;
+    private String title;
+    private String genre;
     private String author;
     private int serial;
     private double cost;
 
     public Book () {}
 
-//    public Book(String me) {}
-
-    Book(String title, String genre, String author, int serial, double cost) {
-        this.title = title;
-        this.genre = genre;
-        this.author = author;
-        this.serial = serial;
-        this.cost = cost;
-    }
+//    Book(String title, String genre, String author, int serial, double cost) {
+//        this.title = title;
+//        this.genre = genre;
+//        this.author = author;
+//        this.serial = serial;
+//        this.cost = cost;
+//    }
 
     //Getters and Setters
 
     //Title
-    String getTitle() {
+    public String getTitle() {
         return title;
     }
     void setTitle(String title) {
@@ -34,7 +32,7 @@ public class Book {
     }
 
     //Genre
-    String getGenre() {
+    public String getGenre() {
         return genre;
     }
     void setGenre(String genre) {
@@ -42,7 +40,7 @@ public class Book {
     }
 
     //Author
-    String getAuthor() {
+    public String getAuthor() {
         return author;
     }
     void setAuthor(String author) {
@@ -50,7 +48,7 @@ public class Book {
     }
 
     //Serial
-    int getSerial() {
+    public int getSerial() {
         return serial;
     }
     void setSerial(int serial) {
@@ -58,7 +56,7 @@ public class Book {
     }
 
     //Cost
-    double getCost() {
+    public double getCost() {
         return cost;
     }
     void setCost(double cost) {

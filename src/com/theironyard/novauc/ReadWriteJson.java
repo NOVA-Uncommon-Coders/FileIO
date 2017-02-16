@@ -12,7 +12,8 @@ import java.util.Scanner;
  * Created by peter on 2/15/17.
  */
 public class ReadWriteJson {
-    File f = new File("smook.json");
+
+    File f = new File("book.json");
 
     public void writing(Book yourBook) throws IOException{
 
@@ -24,6 +25,7 @@ public class ReadWriteJson {
 
         fw.write(jsonformattedBook);
         fw.close();
+
     }
     public void reading(Book yourBook) throws IOException{
         Scanner s = new Scanner(f);

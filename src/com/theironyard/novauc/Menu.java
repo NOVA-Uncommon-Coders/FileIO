@@ -8,39 +8,21 @@ import java.util.Scanner;
  */
 public class Menu {
 
-    //variables that the user is knowingly interacting with
-    String title = "qwe";
-    String genre = "asd";
-    String author = "zxc";
-    int serial = 998877;
-    double cost = 67.89;
+    private String category;
 
     Book myBook = new Book();
 
-    public void something() {
-        System.out.println(myBook.getAuthor());
-    }
+    ReadWriteJson rwj = new ReadWriteJson();
 
-    //book.setTitle(title);
-    //book.setGenre(genre);
-
-
-
-
-
-
-    //admin variable
-    String category;
 
     Scanner inputInt = new Scanner(System.in);
     Scanner inputDbl = new Scanner(System.in);
     Scanner input = new Scanner(System.in);
-    ReadWriteJson rwj = new ReadWriteJson();
 
 
     public void start() throws IOException{
         while (true) {
-            System.out.println("What would you like to do? add / update / cancel");
+            System.out.println("What would you like to do? add / update / done");
             switch (input.nextLine()) {
 
                 case "add" :
@@ -51,26 +33,31 @@ public class Menu {
                                 break;
                 default:
                     rwj.writing(myBook);
+                    System.out.println("test: rwj should have written");
                     return;
             }
         }
     }
     public void add() {
             System.out.println("What is the title?");
-            this.title = input.nextLine();
+            myBook.setTitle(input.nextLine());
             System.out.println("What is the genre?");
-            this.genre = input.nextLine();
+            myBook.setGenre(input.nextLine());
             System.out.println("What is the author?");
-            this.author = input.nextLine();
+            myBook.setAuthor(input.nextLine());
             System.out.println("What is the serial number?");
-            this.serial = input.nextInt();
+            myBook.setSerial(inputInt.nextInt());
             System.out.println("What is the cost?");
-            this.cost = input.nextDouble();
+            myBook.setCost(inputDbl.nextDouble());
     }
 
     public void update() {
         while (true) {
-            System.out.println("Which category would you like to update? title / genre / author / serial / cost / cancel");
+            //ToDo: add reading the file method
+            //ToDo: also add writing the file method so that the file writes after updating - done in other menu
+            //rwj.reading(Book myBook);
+
+            System.out.println("Which category would you like to update? title / genre / author / serial / cost / done");
             category = input.nextLine();
             switch (category) {
                 case "title" :
@@ -78,8 +65,7 @@ public class Menu {
                                 myBook.setTitle(input.nextLine());
                                 break;
                 case "genre" :
-                                System.out.println("What is the genre");
-                                //this.genre = input.nextLine();
+                                System.out.println("What is the genre?");
                                 myBook.setGenre(input.nextLine());
                                 break;
                 case "author" :
