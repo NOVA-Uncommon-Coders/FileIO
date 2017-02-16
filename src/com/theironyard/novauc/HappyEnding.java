@@ -10,5 +10,6 @@ public class HappyEnding extends Massage {
         this.price=price;
         this.yelpRating=yelpRating;
         this.specialty=specialty;
+
     }
 }

@@ -18,7 +18,7 @@ public class MassageMenu {
     public void createOptions() {
         Main.listMasseuse.add(new HappyEnding("Will", 60, 220, 5, "Happy Endings"));
         Main.listMasseuse.add(new Aromatherapy("Prakash", 90, 400, 5, "Aromatherapy"));
-        Main.listMasseuse.add(new SwedishMassage("D'Angelo", 45, 200, 2, "Swedish Massage"));
+        Main.listMasseuse.add(new SwedishMassage("D'Angelo", 45, 200, 4, "Swedish Massage"));
         Main.listMasseuse.add(new HotStoneMassage("Ross", 75, 333, 3, "Hot Stone Massage"));
         Main.listMasseuse.add(new DeepTissueMassage("Peter", 60, 450, 1, "Deep Tissue Massage"));
         Main.listMasseuse.add(new HotStoneMassage("Mike", 10, 222, 3, "Hot Stone Massage"));
@@ -46,25 +46,25 @@ public class MassageMenu {
                     showGirls();
                     System.out.println("Would you like to return to the main menu??");
                     System.out.println("YES or YES or 1 ?");
-                    String worthlessInput1 = Main.kb2.nextLine();
+                    String worthlessInput1 = Main.nextLine();
                     break;
                 case 2:
                     rateGirl();
                     System.out.println("Would you like to return to the main menu??");
                     System.out.println("YES or YES or 1 ?");
-                    String worthlessInput2 = Main.kb2.nextLine();
+                    String worthlessInput2 = Main.nextLine();
                     break;
                 case 3:
                     joinTeam();
                     System.out.println("Would you like to return to the main menu??");
                     System.out.println("YES or YES or 1 ?");
-                    String worthlessInput3 = Main.kb2.nextLine();
+                    String worthlessInput3 = Main.kb4.nextLine();
                     break;
                 default:
                     System.out.println("You have chosen to have all out 'GIRLS' rub up against you for $10000");
                     System.out.println("now you have cholera and you're broke please leave the establishment before I have to call security");
                     System.out.println("decide :  [RETURN] with a disguise or [Leave] the establishment");
-                    String leaveStatement=Main.kb4.nextLine();
+                    String leaveStatement=Main.kb5.nextLine();
                     if(leaveStatement.equalsIgnoreCase("leave")){
                         System.out.println("Don't let the door hit you where the good Lord split ya");
                     }
@@ -77,8 +77,8 @@ public class MassageMenu {
         }
     }
 
+    //This is option 1 showing the current list of "girls" this will be set the first time its run but will add a loading feature late
     public void showGirls() throws IOException {
-
         File file = new File("masseuse.json");
         FileWriter fwriter = new FileWriter(file);
 
@@ -109,11 +109,12 @@ public class MassageMenu {
 //        System.out.println("p2 is alive ? "+ p2.isAlive);
     }
 
+    //This is option 2 makes changes to the current list that was populated at the beginning of the program has a catch
+    //That will only let it update if they chose a "girl" that really is on the list
     public void rateGirl() throws IOException {
         System.out.println("Which one of our 'girls' serviced you this afternoon");
         String ratedGirl = Main.kb3.nextLine();
         for (Massage listItem : Main.listMasseuse) {
-//            listItem.print();
             if (ratedGirl.equalsIgnoreCase(listItem.getMasseuse())) {
                 listItem.print();
                 System.out.printf("You choose to rate %s\n", listItem.getMasseuse());
@@ -142,10 +143,10 @@ public class MassageMenu {
                         System.out.println("please leave now before we call security");
                         break;
                 }
+               break;
             }
             if(!ratedGirl.equalsIgnoreCase(listItem.getMasseuse())) {
                 System.out.println("You chose a 'girl' not employed here seems like you got scammed");
-
             }
         }
 
@@ -156,6 +157,7 @@ public class MassageMenu {
         fwriter.close();
     }
 
+    //This is option 3 and adds the current user to the pool of "girls" available.
     public void joinTeam()throws IOException {
         System.out.println("Perfect you are a beautiful girl some one would be happy to get a 'massage' from you");
         System.out.println("Please fill out the form so you can join our little family");
@@ -185,4 +187,25 @@ public class MassageMenu {
         fwriter.close();
 
     }
+
+    //This is the admin menu only madam trung will see
+    public void admin() throws IOException{
+        System.out.println("##############################################################");
+        System.out.println("################                               ###############");
+        System.out.println("########                   WELCOME                    ########");
+        System.out.println("######                                                  ######");
+        System.out.println("########                  MADAM TRUNG                 ########");
+        System.out.println("################                              ################");
+        System.out.println("##############################################################");
+        System.out.println("would you like to save the current list of 'girls' to a folder");
+        System.out.println("or would you like to load a previous list that was saved previously");
+        String madamResponse = Main.nextLine();
+        if(madamResponse.equalsIgnoreCase("save")){
+            Main.massage.saveGirls();
+        }
+        else if (madamResponse.equalsIgnoreCase("load")){
+            //Main.massage.loadGirls();
+        }
+    }
+
 }

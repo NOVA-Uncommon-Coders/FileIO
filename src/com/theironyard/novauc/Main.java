@@ -23,40 +23,36 @@ public class Main {
     public static MassageMenu menu=new MassageMenu();
     public static JsonSerializer serializer=new JsonSerializer();
     public static JsonParser parser = new JsonParser();
+    public static Massage massage = new Massage();
 
 
     public static void main(String[] args) throws IOException {
         menu.createOptions();
         menu.massageMenu();
 
-//        Person p = new Person();
-//
-//        p.setName("Alice Smith");
-//        p.setAge(30);
-//
-//
-//        File f=new File("person.json");
-//
-//        JsonSerializer serializer=new JsonSerializer();
-//
-//        String jsonFormatedPerson =serializer.serialize(p);
-//        FileWriter fw = new FileWriter(f);
-//
-//        fw.write(jsonFormatedPerson);
-//        fw.close();
-//
-//
-//        Scanner s = new Scanner(f);
-//        s.useDelimiter("\\Z");
-//        String contents =s.next();
-//
-//
-//        JsonParser parser = new JsonParser();
-//        Person p2 = parser.parse(contents,Person.class);
-//
-//        System.out.println(p2);
-//        System.out.println("p2 name is "+ p2.name);
-//        System.out.println("p2 age is "+ p2.age);
-//        System.out.println("p2 is alive ? "+ p2.isAlive);
+
     }
+    public static String nextLine()throws IOException{
+//        while(kb.hasNextLine()){
+//            String throwAway=kb.nextLine();
+//            throwAway=kb.next();
+//        }
+        String line = kb.nextLine();
+        while (line.startsWith("/")){
+            switch (line){
+                case "/admin":
+                    menu.admin();
+                    break;
+                case "/exit":
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Command not found");
+                    break;
+            }
+            line = kb2.nextLine();
+        }
+        return line;
+    }
+
 }
