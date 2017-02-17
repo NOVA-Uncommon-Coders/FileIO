@@ -27,55 +27,63 @@ public class MassageMenu {
 
     //This is the welcome screen showing our top of the line display page setup
     public void massageMenu() throws IOException {
-        while (true) {
-            System.out.println("##############################################################");
-            System.out.println("################                               ###############");
-            System.out.println("########             HELLO AND WELCOME TO             ########");
-            System.out.println("######                                                  ######");
-            System.out.println("#####           MADAM TRUNG'S MASSAGE PALACE             #####");
-            System.out.println("#####                                                    #####");
-            System.out.println("#####        PLEASE SELECT ONE OF THESE OPTIONS          #####");
-            System.out.println("#####                                                    #####");
-            System.out.println("#####    (1)[SHOW OUR 'GIRLS']  ##  (2)[RATE A SERVICE]  #####");
-            System.out.println("#####                                                    #####");
-            System.out.println("######                (3)[JOIN OUR TEAM]                ######");
-            System.out.println("##############################################################");
-            int menuResponse = Main.kb.nextInt();
-            switch (menuResponse) {
-                case 1:
-                    showGirls();
-                    System.out.println("Would you like to return to the main menu??");
-                    System.out.println("YES or YES or 1 ?");
-                    String worthlessInput1 = Main.nextLine();
-                    break;
-                case 2:
-                    rateGirl();
-                    System.out.println("Would you like to return to the main menu??");
-                    System.out.println("YES or YES or 1 ?");
-                    String worthlessInput2 = Main.nextLine();
-                    break;
-                case 3:
-                    joinTeam();
-                    System.out.println("Would you like to return to the main menu??");
-                    System.out.println("YES or YES or 1 ?");
-                    String worthlessInput3 = Main.kb4.nextLine();
-                    break;
-                default:
-                    System.out.println("You have chosen to have all out 'GIRLS' rub up against you for $10000");
-                    System.out.println("now you have cholera and you're broke please leave the establishment before I have to call security");
-                    System.out.println("decide :  [RETURN] with a disguise or [Leave] the establishment");
-                    String leaveStatement=Main.kb5.nextLine();
-                    if(leaveStatement.equalsIgnoreCase("leave")){
-                        System.out.println("Don't let the door hit you where the good Lord split ya");
-                    }
-                    if(leaveStatement.equalsIgnoreCase("return")){
-                        System.out.println("You return in the back door");
-                    }
-                    break;
-            }
-
+        System.out.println("##############################################################");
+        System.out.println("################                               ###############");
+        System.out.println("########             HELLO AND WELCOME TO             ########");
+        System.out.println("######                                                  ######");
+        System.out.println("#####           MADAM TRUNG'S MASSAGE PALACE             #####");
+        System.out.println("#####                                                    #####");
+        System.out.println("#####        PLEASE SELECT ONE OF THESE OPTIONS          #####");
+        System.out.println("#####                                                    #####");
+        System.out.println("#####    (1)[SHOW OUR 'GIRLS']  ##  (2)[RATE A SERVICE]  #####");
+        System.out.println("#####                                                    #####");
+        System.out.println("######                (3)[JOIN OUR TEAM]                ######");
+        System.out.println("##############################################################");
+        int menuResponse = Main.kb.nextInt();
+        switch (menuResponse) {
+            case 1:
+                showGirls();
+//                System.out.println("Would you like to return to the main menu??");
+//                System.out.println("YES or YES or 1 ?");
+//                String worthlessInput1 = Main.kb.nextLine();
+//                massageMenu();
+                break;
+            case 2:
+                rateGirl();
+                System.out.println("Would you like to return to the main menu??");
+                System.out.println("YES or YES or 1 ?");
+                String worthlessInput2 = Main.kb.nextLine();
+                massageMenu();
+                break;
+            case 3:
+                joinTeam();
+                System.out.println("Would you like to return to the main menu??");
+                System.out.println("YES or YES or 1 ?");
+                String worthlessInput3 = Main.kb4.nextLine();
+                massageMenu();
+                break;
+            case 4:
+                Main.menu.admin();
+                massageMenu();
+                break;
+            default:
+                System.out.println("You have chosen to have all out 'GIRLS' rub up against you for $10000");
+                System.out.println("now you have cholera and you're broke please leave the establishment before I have to call security");
+                System.out.println("decide :  [RETURN] with a disguise or [Leave] the establishment");
+                String leaveStatement = Main.kb5.nextLine();
+                if (leaveStatement.equalsIgnoreCase("leave")) {
+                    System.out.println("Don't let the door hit you where the good Lord split ya");
+                    System.exit(0);
+                }
+                if (leaveStatement.equalsIgnoreCase("return")) {
+                    System.out.println("You return in the back door");
+                    massageMenu();
+                }
+                break;
         }
+
     }
+
 
     //This is option 1 showing the current list of "girls" this will be set the first time its run but will add a loading feature late
     public void showGirls() throws IOException {
@@ -88,6 +96,11 @@ public class MassageMenu {
         String jsonFormatedItem = Main.serializer.serialize(Main.listMasseuse);
         fwriter.append(jsonFormatedItem);
         fwriter.close();
+        System.out.println("Would you like to return to the main menu??");
+        System.out.println("YES or YES or 1 ?");
+        String worthlessInput1 = Main.kb4.nextLine();
+
+        massageMenu();
 //        Person p = new Person();
 //        p.setName("Alice Smith");
 //        p.setAge(30);
@@ -155,6 +168,11 @@ public class MassageMenu {
         String jsonFormatedItem = Main.serializer.serialize(Main.listMasseuse);
         fwriter.append(jsonFormatedItem);
         fwriter.close();
+        System.out.println("Would you like to return to the main menu??");
+        System.out.println("YES or YES or 1 ?");
+        String worthlessInput1 = Main.kb4.nextLine();
+
+        massageMenu();
     }
 
     //This is option 3 and adds the current user to the pool of "girls" available.
@@ -197,8 +215,8 @@ public class MassageMenu {
         System.out.println("########                  MADAM TRUNG                 ########");
         System.out.println("################                              ################");
         System.out.println("##############################################################");
-        System.out.println("would you like to save the current list of 'girls' to a folder");
-        System.out.println("or would you like to load a previous list that was saved previously");
+        System.out.println("would you like to [save] the current list of 'girls' to a folder");
+        System.out.println("or would you like to [load] a previous list that was saved previously");
         String madamResponse = Main.nextLine();
         if(madamResponse.equalsIgnoreCase("save")){
             Main.massage.saveGirls();

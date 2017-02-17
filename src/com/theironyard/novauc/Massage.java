@@ -83,8 +83,76 @@ public class Massage {
 //
 //        JsonParser parser = new JsonParser();
 //        //return parser.parse(contents, Main.listMasseuse.add(new HappyEnding()));
-//        return Main.listMasseuse.add(new HappyEnding(parser.parse(contents,Massage.class)));
+//        Massage adder = parser.parse(contents,Massage.class);
+//        return Main.listMasseuse.add(adder);
 //    }
+//+    public void readFile() throws IOException {
+//+        Scanner scannerFileDelf = new Scanner(fileDelf);
+//+        Scanner scannerFileDwarf = new Scanner(fileDwarf);
+//+        Scanner scannerFileHelf = new Scanner(fileHelf);
+//+        scannerFileDelf.useDelimiter("\n");
+//+        scannerFileHelf.useDelimiter("\n");
+//+        scannerFileDwarf.useDelimiter("\n");
+//+        JsonParser parser = new JsonParser();
+//+
+//    +        String contents;
+//+        while (scannerFileDelf.hasNext()) {
+//+            contents = scannerFileDelf.next();
+//+            DarkElf a = parser.parse(contents, DarkElf.class);
+//+            toons.put(a.getName(), a);
+//+        }
+//+        while (scannerFileDwarf.hasNext()) {
+//+            contents = scannerFileDwarf.next();
+//+            Dwarf b = parser.parse(contents, Dwarf.class);
+//+            toons.put(b.getName(), b);
+//+        }
+//+        while (scannerFileHelf.hasNext()) {
+//+            contents = scannerFileHelf.next();
+//+            HalfElf c = parser.parse(contents, HalfElf.class);
+//+            toons.put(c.getName(), c);
+//+        }
+//+    }
+//+    public void writeFile() throws IOException {
+//+        FileWriter fileWriterDelf = new FileWriter(fileDelf);
+//+        FileWriter fileWriterDwarf = new FileWriter(fileDwarf);
+//+        FileWriter fileWriterHelf = new FileWriter(fileHelf);
+//+        JsonSerializer serializer = new JsonSerializer();
+//+
+//    +        boolean delfDidWrite = false;
+//+        boolean helfDidWrite = false;
+//+        boolean dwarfDidWrite = false;
+//+
+//    +        String json;
+//+
+//    +        for (Map.Entry<String, Characters> entry : toons.entrySet()) {
+//+            json = serializer.serialize(entry.getValue());
+//+
+//        +            if (entry.getValue().getRace().equalsIgnoreCase("dark Elf")) {
+//    +                fileWriterDelf.append(json);
+//    +                fileWriterDelf.append("\n");
+//    +                delfDidWrite = true;
+//    +            } else if (entry.getValue().getRace().equalsIgnoreCase("half Elf")) {
+//    +                fileWriterHelf.append(json);
+//    +                fileWriterHelf.append("\n");
+//    +                helfDidWrite = true;
+//    +            } else if (entry.getValue().getRace().equalsIgnoreCase("dwarf")) {
+//    +                fileWriterDwarf.append(json);
+//    +                fileWriterDwarf.append("\n");
+//    +                dwarfDidWrite = true;
+//    +            } else {
+//    +                System.out.println("Something bad in write!");
+//    +            }
+//+        }
+//+        if (delfDidWrite) {
+//+            fileWriterDelf.close();
+//+        }
+//+        if (dwarfDidWrite) {
+//+            fileWriterDwarf.close();
+//+        }
+//+        if (helfDidWrite) {
+//+            fileWriterHelf.close();
+//+        }
+//+    }
 
     //This si the print screen and it retrieves it by iterating through everything and using this object in the parent class
     public void print() {
