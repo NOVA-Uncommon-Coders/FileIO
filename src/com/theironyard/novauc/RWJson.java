@@ -16,7 +16,7 @@ public class RWJson {
 
         Comedian c = new Comedian ();
         c.name  = "";//scanner?
-        c.age = 20;
+        c.age = 20; //scanner?
 
         File f = new File ("comedian.json");
 

@@ -3,23 +3,25 @@ package com.theironyard.novauc;
 import java.util.Scanner;
 
 
-public class CInputProgram {
+class CInputProgram {
 
     public static Scanner scannerln = new Scanner(System.in);
     public static String input = scannerln.nextLine();
+    public static int intInput = scannerln.nextInt();
     public static Comedian comedian = new Comedian();
 
     public static void main(String[] args) throws Exception {
 
         System.out.println ("Hi! What would you like to know about our Comedian?");
 
-        Comedian.chooseOption();
+        //Comedian.chooseOption();
     }
-    
+
         public static String nextLine() {
         String line = scannerln.nextLine();
+        Integer intLine = scannerln.nextInt();
 
-        while (line.startsWith("/")) {
+        while (line.startsWith("/") || Integer.valueOf("1")) {
             switch (line) {
 
                 case "/input":
