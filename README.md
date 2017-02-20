@@ -10,7 +10,7 @@ Write a program that asks the user to enter information about a particular good 
 
 ## Requirements
 
-* Prompt the user to answer at least five different questions about a good or service.
+* Prompt the user to answer at least five different questions about a good or service. X
 * Save the information into a JSON object in a file.
 * When the program first boots, read the file and display the contents.
 * Give the user the ability to update the information and re-save it to the file.
