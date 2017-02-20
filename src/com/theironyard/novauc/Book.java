@@ -8,10 +8,32 @@ public class Book {
 
     String Title;
     String Author;
-    int DatePublished;
+    String DatePublished;
     String Genre;
     boolean Accessible;
 
+            public Book(String title, String author, String datePublished, String genre, boolean accessible) {
+                Title = title;
+                Author = author;
+                DatePublished = datePublished;
+                Genre = genre;
+                Accessible = accessible;
+
+            }
+//no arg constructror allows to create a book object without any default values
+            public Book(){
+
+
+            }
+
+    public String toString(){
+        String book = "Title : " + getTitle() + ", "
+                + "Author: " + getAuthor() + ", "
+                + "DatePublished: " + getDatePublished() + ", "
+                + "Genre: " + getGenre() + ", "
+                + "Accessible?: " + isAccessible();
+        return book;
+    }
 
     public String getTitle() {
         return Title;
@@ -29,11 +51,11 @@ public class Book {
         Author = author;
     }
 
-    public int getDatePublished() {
+    public String getDatePublished() {
         return DatePublished;
     }
 
-    public void setDatePublished(int datePublished) {
+    public void setDatePublished(String datePublished) {
         DatePublished = datePublished;
     }
 
