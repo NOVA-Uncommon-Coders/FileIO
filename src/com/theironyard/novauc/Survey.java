@@ -1,6 +1,8 @@
 package com.theironyard.novauc;
 
 
+import java.util.Scanner;
+
 /**
  * Created by octavio on 2/16/17.
  */
@@ -11,6 +13,7 @@ public class Survey {
     int year;
     String color;
     int experience;
+
 
 
     public String getBrand() {return brand;}
@@ -34,4 +37,12 @@ public class Survey {
     public void setExperience(int experience) {this.experience = experience;}
 
 
+    @Override //turn from memory to print like that...because its working in a survey object
+    public String toString() {
+        return this.brand + " " + model + " " + year + " " + color + " " + experience;
+    }
+
+//    public Scanner getUserInput() {return userInput;}
+//
+//    public void setUserInput(Scanner userInput) {this.userInput = userInput;}
 }
