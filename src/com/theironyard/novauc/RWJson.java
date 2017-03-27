@@ -12,34 +12,36 @@ import java.util.Scanner;
  * Created by dangelojoyce on 2/15/17.
  */
 public class RWJson {
-    public static void main (String [] arg) throws IOException {
+    File f = new File("comedian.json");
+    Comedian c = new Comedian();
 
-        Comedian c = new Comedian ();
-        c.name  = "";//scanner?
-        c.age = 20; //scanner?
+    public RWJson() throws  IOException{
 
-        File f = new File ("comedian.json");
-
-        //write json
-
+    }
+    public void writeFile() throws IOException{
         JsonSerializer serializer = new JsonSerializer();
         String json = serializer.serialize(c);
         FileWriter fw = new FileWriter(f); //unhandled exception: java io exception (IDE message)
         fw.write(json);
         fw.close();
-
-        //read json
-
-        Scanner s = new Scanner (f);
+    }
+    public void readFile() throws IOException{
+        Scanner s = new Scanner(f);
         s.useDelimiter("\\Z");
-        String contents = s.next();
-        JsonParser parser = new JsonParser();
-        Comedian c2 = parser.parse(contents, Comedian.class);
-
-        System.out.println(c2);
-
-
+            String contents = s.nextLine();
+            JsonParser parser = new JsonParser();
+            c = parser.parse(contents, Comedian.class);
+            System.out.println(c);
 
     }
+    public void displayObject(){
 
+        System.out.println("What's the name of the comedian?" + c.getName());
+        System.out.println("What's the age of the comedian?" + c.getAge());
+        System.out.println("What's the height of the comedian" + c.getHeight());
+        System.out.println("What joke's do you want?" + c.getJokes());
+        System.out.println("Is it funny?" + c.isLaughs());
+    }
 }
+
+

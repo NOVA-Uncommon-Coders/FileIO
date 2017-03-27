@@ -6,21 +6,60 @@ import java.util.ArrayList;
  * Created by dangelojoyce on 2/7/17.
  */
 public class Comedian {
-    int age;
-    int height;
-    String name;
-    String jokes;
-    boolean laughs;
+    private String name;
+    private int age;
+    private int height;
+    private String jokes;
+    private boolean laughs;
     ArrayList<String> options = new ArrayList<>();
-
-
-    public Comedian() {
+    public Comedian(){
     }
 
-    public Comedian(int age, int height, String name, String jokes, boolean laughs) {
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getJokes() {
+        return jokes;
+    }
+
+    public void setJokes(String jokes) {
+        this.jokes = jokes;
+    }
+
+    public boolean isLaughs() {
+        return laughs;
+    }
+
+    public ArrayList<String> getOptions() {
+        return options;
+    }
+
+    public void setOptions(ArrayList<String> options) {
+        this.options = options;
+    }
+
+
+    public Comedian(String name, int age, int height, String jokes, boolean laughs) {
+        this.name = name;
         this.age = age;
         this.height = height;
-        this.name = name;
         this.jokes = jokes;
         this.laughs = laughs;
     }
@@ -29,38 +68,47 @@ public class Comedian {
         return age;
     }
 
-//    public static void chooseOption (String options) throws Exception {
-//        System.out.println("Here are your " + options + "!  Choose one? [y/n]");
-//
-//        String answer = CInputProgram.nextLine();
-//
-//        if (answer.equalsIgnoreCase("y")) {
-//            options.input(options);
-//            System.out.println("Choose next option");
-//
-//        } else if (answer.equalsIgnoreCase ("n")) {
-//            System.out.println("Have a nice day!");
-//        } else {throw new Exception("Error: Please make another selection");
-//        }
 
-
-
-    public void chooseInt() throws Exception {
+    public void chooseAge() throws Exception {
         System.out.println ("Choose your option [age]");
-        Integer = CInputProgram.nextInt();
+        age = CInputProgram.intInput.nextInt();
 
     }
+
+    public void chooseHeight() {
+        System.out.println("What's his height?");
+        height = CInputProgram.intInput.nextInt();
+    }
+
 
     public void chooseName(){
-        System.out.println("What is your name?");
-        name = CInputProgram.nextLine();
+        System.out.println("What is the comedian's name?");
+       name = CInputProgram.scannerln.nextLine();
+
     }
     public void chooseJokes() throws Exception {
-        System.out.println ("Choose next option");
-        jokes = CInputProgram.nextLine();
-
+        System.out.println ("Choose next joke");
+        jokes = CInputProgram.scannerln.nextLine();
 
 }
+    public void chooseLaughs(){
+
+        while (true){
+            System.out.println("Do you laugh? Y or N");
+            switch (CInputProgram.scannerln.nextLine()) {
+                case "Y":
+                    laughs = true;
+                    return;
+                case "N":
+                    laughs = false;
+                    System.out.println("You don't have a sense of humor");
+                    return;
+                default:
+                    System.out.println("Choose the correct option");
+                    break;
+            }
+        }
+    }
 
     public void setLaughs (boolean laughs){
         if(this.laughs == true){
