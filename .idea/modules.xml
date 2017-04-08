@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/src/BrowserDesktop/BrowserDesktop.iml" filepath="$PROJECT_DIR$/src/BrowserDesktop/BrowserDesktop.iml" />
       <module fileurl="file://$PROJECT_DIR$/FileIO.iml" filepath="$PROJECT_DIR$/FileIO.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src/ToDoDesktop/ToDoDesktop.iml" filepath="$PROJECT_DIR$/src/ToDoDesktop/ToDoDesktop.iml" />
     </modules>
   </component>
 </project>
